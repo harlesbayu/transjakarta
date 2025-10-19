@@ -93,7 +93,7 @@ docker compose down -v
 | PostgreSQL     | `5432` | Dapat diakses dari DBeaver / psql |
 | RabbitMQ       | `15672` | Web UI: http://localhost:15672 (user: `guest`, pass: `guest`) |
 | Mosquitto (MQTT) | `1883` | Endpoint MQTT Broker |
-| Fleet Backend  | `8080` | HTTP API utama |
+| Fleet Backend  | `8000` | HTTP API utama |
 
 ---
 

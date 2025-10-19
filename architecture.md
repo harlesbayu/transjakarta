@@ -121,7 +121,7 @@ Berfungsi untuk melakukan pengujian dan simulasi sistem tanpa perangkat fisik.
 
 | Komponen         | Port  | Peran Utama                        | Komunikasi Dengan        |
 |------------------|-------|------------------------------------|--------------------------|
-| Fleet Backend    | 8080  | Core service (HTTP + MQ + DB)      | PostgreSQL, RabbitMQ, MQTT |
+| Fleet Backend    | 8000  | Core service (HTTP + MQ + DB)      | PostgreSQL, RabbitMQ, MQTT |
 | RabbitMQ         | 5672 / 15672 | Event bus & message broker       | Fleet Backend, Geofence Worker |
 | Mosquitto        | 1883 / 9001   | MQTT broker                     | Mock Publisher, Fleet Backend |
 | PostgreSQL       | 5432  | Database utama                     | Fleet Backend |
