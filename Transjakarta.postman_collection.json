@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "3be36a04-3f57-468b-99ed-2d95d997dca8",
+		"name": "Transjakarta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24630729"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "sukses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{8000}}/ping",
+							"host": [
+								"{{8000}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 18 Oct 2025 08:59:16 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"pong\": true,\n    \"status\": \"ok\",\n    \"time\": 1760777956\n}"
+				}
+			]
+		},
+		{
+			"name": "Get last location by vehicle id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/vehicles/:vehicle_id/location",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"vehicles",
+						":vehicle_id",
+						"location"
+					],
+					"variable": [
+						{
+							"key": "vehicle_id",
+							"value": "B1009AI"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "sukses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{8000}}/vehicles/:vehicle_id/location",
+							"host": [
+								"{{8000}}"
+							],
+							"path": [
+								"vehicles",
+								":vehicle_id",
+								"location"
+							],
+							"variable": [
+								{
+									"key": "vehicle_id",
+									"value": "B1234XYZ"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 18 Oct 2025 09:50:42 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "95"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"vehicle_id\": \"B1234XYZ\",\n    \"latitude\": -6.2088,\n    \"longitude\": 106.8456,\n    \"timestamp\": 1715003456\n}"
+				}
+			]
+		},
+		{
+			"name": "Get history by vehicle id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{8000}}/vehicles/:vehicle_id/history?start=1760865912&end=1760868783",
+					"host": [
+						"{{8000}}"
+					],
+					"path": [
+						"vehicles",
+						":vehicle_id",
+						"history"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "1760865912"
+						},
+						{
+							"key": "end",
+							"value": "1760868783"
+						}
+					],
+					"variable": [
+						{
+							"key": "vehicle_id",
+							"value": "B1009AI"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "sukses",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{8000}}/vehicles/:vehicle_id/history?start=1715000000&end=1715010000",
+							"host": [
+								"{{8000}}"
+							],
+							"path": [
+								"vehicles",
+								":vehicle_id",
+								"history"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "1715000000"
+								},
+								{
+									"key": "end",
+									"value": "1715010000"
+								}
+							],
+							"variable": [
+								{
+									"key": "vehicle_id",
+									"value": "B1234XYZ"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 18 Oct 2025 10:00:36 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "97"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"vehicle_id\": \"B1234XYZ\",\n        \"latitude\": -6.2088,\n        \"longitude\": 106.8456,\n        \"timestamp\": 1715003456\n    }\n]"
+				}
+			]
+		}
+	]
+}
