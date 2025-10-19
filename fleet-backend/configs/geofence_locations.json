@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Monas",
+    "latitude": -6.175392,
+    "longitude": 106.827153,
+    "radius": 50
+  },
+  {
+    "name": "Dukuh Atas 2",
+    "latitude": -6.201224,
+    "longitude": 106.822977,
+    "radius": 50
+  },
+  {
+    "name": "Harmoni Central",
+    "latitude": -6.166104,
+    "longitude": 106.829361,
+    "radius": 50
+  },
+  {
+    "name": "Blok M",
+    "latitude": -6.244273,
+    "longitude": 106.800706,
+    "radius": 50
+  },
+  {
+    "name": "Kampung Melayu",
+    "latitude": -6.222821,
+    "longitude": 106.868919,
+    "radius": 50
+  },
+  {
+    "name": "Grogol 1",
+    "latitude": -6.157930,
+    "longitude": 106.788350,
+    "radius": 50
+  },
+  {
+    "name": "Ragunan",
+    "latitude": -6.303207,
+    "longitude": 106.820502,
+    "radius": 50
+  },
+  {
+    "name": "Pulo Gadung 2",
+    "latitude": -6.189308,
+    "longitude": 106.901060,
+    "radius": 50
+  },
+  {
+    "name": "Kalideres",
+    "latitude": -6.159167,
+    "longitude": 106.706389,
+    "radius": 50
+  },
+  {
+    "name": "Depo Cijantung",
+    "latitude": -6.317290,
+    "longitude": 106.852281,
+    "radius": 50
+  }
+]

@@ -1,0 +1,96 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_USER: fleet
+      POSTGRES_PASSWORD: fleetpass
+      POSTGRES_DB: fleetdb
+    volumes:
+      - ./dockercompose/data/postgres:/var/lib/postgresql/data
+      - ./dockercompose/configs/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./dockercompose/logs/postgres:/var/log/postgresql
+    ports:
+      - "5432:5432"
+    networks:
+      - fleetnet
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - fleetnet
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "status"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./dockercompose/configs/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./dockercompose/data/mosquitto:/mosquitto/data
+      - ./dockercompose/logs/mosquitto:/mosquitto/log
+    networks:
+      - fleetnet
+
+  fleet-backend:
+    build:
+      context: ./fleet-backend
+      dockerfile: Dockerfile
+    container_name: fleet-backend
+    depends_on:
+      postgres:
+        condition: service_started
+      rabbitmq:
+        condition: service_healthy
+      mosquitto:
+        condition: service_started
+    volumes:
+      - ./fleet-backend/configs:/app/configs
+    networks:
+      - fleetnet
+    ports:
+      - "8000:8000"
+    restart: always
+
+  geofence-worker:
+    build:
+      context: ./geofence-worker
+      dockerfile: Dockerfile
+    container_name: geofence-worker
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - fleetnet
+    restart: always
+
+  mock-publisher:
+    build:
+      context: ./mock-publisher
+      dockerfile: Dockerfile
+    container_name: mock-publisher
+    depends_on:
+      mosquitto:
+        condition: service_started
+    networks:
+      - fleetnet
+
+volumes:
+  postgres_data:
+
+networks:
+  fleetnet:
+    driver: bridge
