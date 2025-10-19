@@ -36,11 +36,6 @@ func (s *MQTTSubscriber) SubscribeVehicleLocation() {
 			return
 		}
 
-		if data.VehicleID == "" || data.Latitude == 0 || data.Longitude == 0 {
-			log.Printf("Invalid data format: %+v", data)
-			return
-		}
-
 		if err := s.usecase.SaveLocation(&data); err != nil {
 			log.Printf("Failed to save location: %v", err)
 			return
