@@ -59,10 +59,7 @@ Mock Publisher  →  Mosquitto  →  Fleet Backend
 
 ## ⚙️ 5. Geofence Worker
 Service *consumer* yang mendengarkan event dari **RabbitMQ**.  
-Saat menerima event `geofence_entry`, worker akan memproses atau mencatatnya.  
-Service ini dapat dikembangkan lebih lanjut untuk:
-- Mengirim notifikasi real-time.
-- Melakukan analitik data pergerakan kendaraan.
+Saat menerima event `geofence_entry`, worker akan memproses atau mencatatnya.
 
 ---
 
